@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">baguiowastesorter</span>
+
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">Button</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">EditText</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">TextView</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">appcompat</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">AlertDialog</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">appcompat</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">AppCompatActivity</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity</span><span class="s2">() {</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">setContentView</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">activity_main</span><span class="s2">)</span>
+
+        <span class="s3">// Show a simple notification/announcement when the app starts</span>
+        <span class="s1">showAnnouncementDialog</span><span class="s2">()</span>
+
+        <span class="s3">// Input and button functionality for product details</span>
+        <span class="s0">val </span><span class="s1">searchButton: Button </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">search_button</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">productInput: EditText </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">product_input</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">resultText: TextView </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">result_text</span><span class="s2">)</span>
+
+        <span class="s1">searchButton</span><span class="s2">.</span><span class="s1">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">val </span><span class="s1">product </span><span class="s2">= </span><span class="s1">productInput</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">().</span><span class="s1">trim</span><span class="s2">().</span><span class="s1">lowercase</span><span class="s2">()</span>
+            <span class="s0">val </span><span class="s1">disposalMethod </span><span class="s2">= </span><span class="s1">getDisposalMethod</span><span class="s2">(</span><span class="s1">product</span><span class="s2">)</span>
+            <span class="s1">resultText</span><span class="s2">.</span><span class="s1">text </span><span class="s2">= </span><span class="s1">disposalMethod</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Function to show the announcement dialog</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">showAnnouncementDialog</span><span class="s2">() {</span>
+        <span class="s0">val </span><span class="s1">announcement </span><span class="s2">= </span><span class="s4">&quot;Important: There will be a delay in garbage collection this week due to local holidays.&quot;</span>
+
+        <span class="s3">// Create an AlertDialog to display the announcement</span>
+        <span class="s0">val </span><span class="s1">builder </span><span class="s2">= </span><span class="s1">AlertDialog</span><span class="s2">.</span><span class="s1">Builder</span><span class="s2">(</span><span class="s0">this</span><span class="s2">)</span>
+        <span class="s1">builder</span><span class="s2">.</span><span class="s1">setTitle</span><span class="s2">(</span><span class="s4">&quot;Announcement&quot;</span><span class="s2">)</span>
+        <span class="s1">builder</span><span class="s2">.</span><span class="s1">setMessage</span><span class="s2">(</span><span class="s1">announcement</span><span class="s2">)</span>
+
+        <span class="s3">// Add an OK button to dismiss the dialog</span>
+        <span class="s1">builder</span><span class="s2">.</span><span class="s1">setPositiveButton</span><span class="s2">(</span><span class="s4">&quot;OK&quot;</span><span class="s2">) { </span><span class="s1">dialog</span><span class="s2">, </span><span class="s1">_ </span><span class="s2">-&gt;</span>
+            <span class="s1">dialog</span><span class="s2">.</span><span class="s1">dismiss</span><span class="s2">() </span><span class="s3">// Close the dialog when the user clicks OK</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Show the dialog</span>
+        <span class="s1">builder</span><span class="s2">.</span><span class="s1">show</span><span class="s2">()</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Function to check the disposal method for a given product</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">getDisposalMethod</span><span class="s2">(</span><span class="s1">product: String</span><span class="s2">)</span><span class="s1">: String </span><span class="s2">{</span>
+        <span class="s3">// Define lists of items in different waste categories</span>
+        <span class="s0">val </span><span class="s1">recyclables </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span><span class="s4">&quot;plastic bottle&quot;</span><span class="s2">, </span><span class="s4">&quot;paper&quot;</span><span class="s2">, </span><span class="s4">&quot;aluminum can&quot;</span><span class="s2">, </span><span class="s4">&quot;glass bottle&quot;</span><span class="s2">, </span><span class="s4">&quot;cardboard&quot;</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">compostables </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span><span class="s4">&quot;food waste&quot;</span><span class="s2">, </span><span class="s4">&quot;fruit peel&quot;</span><span class="s2">, </span><span class="s4">&quot;vegetable waste&quot;</span><span class="s2">, </span><span class="s4">&quot;eggshells&quot;</span><span class="s2">, </span><span class="s4">&quot;coffee grounds&quot;</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">residual </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span><span class="s4">&quot;diaper&quot;</span><span class="s2">, </span><span class="s4">&quot;styrofoam&quot;</span><span class="s2">, </span><span class="s4">&quot;ceramics&quot;</span><span class="s2">, </span><span class="s4">&quot;broken glass&quot;</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">eWaste </span><span class="s2">= </span><span class="s1">listOf</span><span class="s2">(</span><span class="s4">&quot;phone&quot;</span><span class="s2">, </span><span class="s4">&quot;laptop&quot;</span><span class="s2">, </span><span class="s4">&quot;battery&quot;</span><span class="s2">, </span><span class="s4">&quot;television&quot;</span><span class="s2">, </span><span class="s4">&quot;printer&quot;</span><span class="s2">)</span>
+
+        <span class="s0">return when </span><span class="s2">{</span>
+            <span class="s1">recyclables</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) -&gt; </span><span class="s4">&quot;This item is recyclable.&quot;</span>
+            <span class="s1">compostables</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) -&gt; </span><span class="s4">&quot;This item is compostable.&quot;</span>
+            <span class="s1">residual</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) -&gt; </span><span class="s4">&quot;This item belongs to residual waste.&quot;</span>
+            <span class="s1">eWaste</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">product</span><span class="s2">) -&gt; </span><span class="s4">&quot;This item requires special handling (e-waste).&quot;</span>
+            <span class="s0">else </span><span class="s2">-&gt; </span><span class="s4">&quot;Item not found. Please check with local waste management policies.&quot;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/background_gradient">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baguio Waste Sorting"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#2C3E50" /> <!-- Text color -->
+
+    <EditText
+        android:id="@+id/product_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter product name"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/edittext_border"
+        android:inputType="text" />
+
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Disposal Method"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/black"
+        android:textColor="@android:color/white" /> <!-- Button text color -->
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_marginTop="0dp"
+        android:textColor="#34495E" /> <!-- Result text color -->
+
+    <Button
+        android:id="@+id/waste_exchange_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Waste Exchange"
+        android:backgroundTint="@color/black"
+        android:textColor="@android:color/white" /> <!-- Button text color -->
+
+</LinearLayout>
