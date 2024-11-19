@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -33,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        mlModelBinding = true
+    }
 }
 
 dependencies {
@@ -43,6 +47,14 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("org.tensorflow:tensorflow-lite:2.7.0")
+    implementation ("org.tensorflow:tensorflow-lite-support:0.3.1")
+    implementation ("com.google.firebase:firebase-firestore-ktx:25.1.1")
+    implementation ("com.google.android.gms:play-services-vision:20.1.1")
+    implementation ("com.google.firebase:firebase-ml-modeldownloader:25.0.1")
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

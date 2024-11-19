@@ -8,34 +8,8 @@
     android:padding="16dp"
     android:background="@drawable/background_gradient">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Baguio Waste Sorting"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textColor="#2C3E50" /> <!-- Text color -->
+    <!-- Text color -->
 
-    <EditText
-        android:id="@+id/product_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter product name"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:background="@drawable/edittext_border"
-        android:inputType="text" />
-
-
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Check Disposal Method"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/black"
-        android:textColor="@android:color/white" /> <!-- Button text color -->
 
     <TextView
         android:id="@+id/result_text"
@@ -48,10 +22,28 @@
 
     <Button
         android:id="@+id/waste_exchange_button"
-        android:layout_width="match_parent"
+        android:layout_width="259dp"
         android:layout_height="wrap_content"
-        android:text="Waste Exchange"
         android:backgroundTint="@color/black"
-        android:textColor="@android:color/white" /> <!-- Button text color -->
+        android:text="Waste Exchange"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/scan_button"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Scan Waste Item"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/maps_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Garbage Collection Areas"
+        android:backgroundTint="@color/black"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+
 
 </LinearLayout>

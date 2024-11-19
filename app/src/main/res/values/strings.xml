@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">BaguioWasteSorter</string>
+    <string-array name="item_descriptions">
+        <item>Good Condition</item>
+        <item>Needs Repair</item>
+        <item>Brand New</item>
+    </string-array>
+
+    <string-array name="item_categories">
+        <item>Furniture</item>
+        <item>Electronics</item>
+        <item>Books</item>
+        <item>Clothing</item>
+    </string-array>
 </resources>
